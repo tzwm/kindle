@@ -140,6 +140,7 @@ print('书籍总数：',nameOfBooks.__len__())
 # 根据不同书名建立网页文件
 stceOfBookCnt = {}   # 记录每本书有几条标注的字典
 # print(os.listdir())
+os.system("mkdir -p " + BUILD_DIR)
 os.chdir(BUILD_DIR)
 if os.path.exists('books'):
     shutil.rmtree('books')
