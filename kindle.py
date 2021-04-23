@@ -95,9 +95,9 @@ def getTime(s):
 
 # 获取标注内容
 def getMark(s):
-    g = s.split(" | ")[1]
+    str_list = list(filter(None, s.split("\n")))
     try:
-        return g.split("\n\n")[1]
+        return str_list[1]
     except IndexError:
         #print("list index out of range due to empty content")
         return "empty content"
