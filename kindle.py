@@ -79,6 +79,8 @@ FOOTER_CONTENT = '''
 </html>
 '''
 
+BUILD_DIR = "build/"
+
 # 替换不能用作文件名的字符
 def changechar(s):
     return s.translate(str.maketrans(intab,outtab))
@@ -138,6 +140,7 @@ print('书籍总数：',nameOfBooks.__len__())
 # 根据不同书名建立网页文件
 stceOfBookCnt = {}   # 记录每本书有几条标注的字典
 # print(os.listdir())
+os.chdir(BUILD_DIR)
 if os.path.exists('books'):
     shutil.rmtree('books')
 os.mkdir('books') #创建一个books目录，用于存放书名网页文件
@@ -222,3 +225,6 @@ for i in range(0,html_count):
                         .replace("SENTENCE_COUNT",str(num)))
 f.write(FOOTER_CONTENT)
 f.close()
+
+os.chdir("../")
+os.system("cp -r ./assets/* " + BUILD_DIR)
